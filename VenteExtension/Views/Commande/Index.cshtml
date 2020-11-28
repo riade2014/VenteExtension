@@ -1,0 +1,57 @@
+﻿@model IEnumerable<VenteExtension.Models.Commande>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.client.nomCl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.produit.NomExt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.quantCom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.prixTot)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dateCom)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.client.nomCl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.produit.NomExt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.quantCom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.prixTot)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dateCom)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.commandeID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.commandeID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.commandeID })
+        </td>
+    </tr>
+}
+
+</table>

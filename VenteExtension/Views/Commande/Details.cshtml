@@ -1,0 +1,66 @@
+﻿@model VenteExtension.Models.Commande
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Commande</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.client.nomCl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.client.nomCl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.produit.NomExt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.produit.NomExt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.quantCom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quantCom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(Model => Model.produit.Prix_u)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(Model => Model.produit.Prix_u)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.prixTot)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.prixTot)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dateCom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dateCom)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.commandeID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
