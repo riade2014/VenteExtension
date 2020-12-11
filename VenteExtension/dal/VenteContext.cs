@@ -17,6 +17,8 @@ namespace VenteExtension.dal
         public DbSet<Produit> produits { get; set; }
         public DbSet<Commande> commandes { get; set; }
         public DbSet<Client> clients { get; set; }
+        public DbSet<Panier> paniers { get; set; }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

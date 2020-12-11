@@ -130,6 +130,7 @@
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\CommandeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PanierController.cs" />
     <Compile Include="dal\VenteContext.cs" />
     <Compile Include="dal\VenteInitializer.cs" />
     <Compile Include="Global.asax.cs">
@@ -137,6 +138,7 @@
     </Compile>
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\Commande.cs" />
+    <Compile Include="Models\Panier.cs" />
     <Compile Include="Models\Produit.cs" />
     <Compile Include="Controllers\ProduitController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -192,6 +194,11 @@
     <Content Include="Views\Commande\Edit.cshtml" />
     <Content Include="Views\Commande\Index.cshtml" />
     <Content Include="Views\Produit\Create.cshtml" />
+    <Content Include="Views\Panier\Create.cshtml" />
+    <Content Include="Views\Panier\Delete.cshtml" />
+    <Content Include="Views\Panier\Details.cshtml" />
+    <Content Include="Views\Panier\Edit.cshtml" />
+    <Content Include="Views\Panier\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

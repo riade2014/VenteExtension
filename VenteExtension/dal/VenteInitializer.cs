@@ -35,6 +35,14 @@ namespace VenteExtension.dal
             };
             commandes.ForEach(s => context.commandes.Add(s));
             context.SaveChanges();
+
+            var paniers = new List<Panier>
+            {
+                new Panier{produitID=1,clientID=1, prixTotcli=(decimal)10.00},
+                new Panier{produitID=2,clientID=1, prixTotcli=(decimal)11.00},
+            };
+            paniers.ForEach(s => context.paniers.Add(s));
+            context.SaveChanges();
         }
     }
 }

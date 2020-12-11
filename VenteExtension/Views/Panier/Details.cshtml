@@ -1,0 +1,66 @@
+﻿@model VenteExtension.Models.Panier
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Panier</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.client.nomCl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.client.nomCl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.produit.NomExt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.produit.NomExt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.commandeID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.commandeID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.quantCom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quantCom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.prixTot)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.prixTot)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dateCom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dateCom)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.panierID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
