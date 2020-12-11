@@ -29,29 +29,30 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.client.nomCl)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.produit.NomExt)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.quantCom)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.prixTot)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.dateCom)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.commandeID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.commandeID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.commandeID })
-        </td>
-    </tr>
-}
-
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.client.nomCl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.produit.NomExt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.quantCom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.prixTot)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dateCom)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.commandeID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.commandeID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.commandeID })
+            </td>
+        </tr>
+    }
 </table>
+@ViewBag.error

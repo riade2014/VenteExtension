@@ -177,7 +177,6 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Produit\Create.cshtml" />
     <Content Include="Views\Produit\Delete.cshtml" />
     <Content Include="Views\Produit\Details.cshtml" />
     <Content Include="Views\Produit\Edit.cshtml" />
@@ -192,6 +191,7 @@
     <Content Include="Views\Commande\Details.cshtml" />
     <Content Include="Views\Commande\Edit.cshtml" />
     <Content Include="Views\Commande\Index.cshtml" />
+    <Content Include="Views\Produit\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

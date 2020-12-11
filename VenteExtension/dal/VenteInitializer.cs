@@ -13,9 +13,9 @@ namespace VenteExtension.dal
         {
             var produits = new List<Produit>
             {
-                new Produit{NomExt="Meche Liste noire",Prix_u=75.00,quant=20},
-                new Produit { NomExt = "MecheListe blonde", Prix_u = 110.00, quant = 30 },
-                new Produit { NomExt = "MecheListe rouge", Prix_u = 90.00, quant = 30 },
+                new Produit{NomExt="Meche Liste noire",Prix_u=(decimal)75.50,quant=20},
+                new Produit { NomExt = "MecheListe blonde", Prix_u = (decimal)110, quant = 30 },
+                new Produit { NomExt = "MecheListe rouge", Prix_u = (decimal)90, quant = 30 },
             };
             produits.ForEach(s => context.produits.Add(s));
             context.SaveChanges();
@@ -30,8 +30,8 @@ namespace VenteExtension.dal
             context.SaveChanges();
             var commandes = new List<Commande>
             {
-                new Commande{produitID=1,clientID=1,quantCom=1, prixTot=10.00,dateCom=DateTime.Today},
-                new Commande{produitID=2,clientID=1,quantCom=1, prixTot=11.00,dateCom=DateTime.Today},
+                new Commande{produitID=1,clientID=1,quantCom=1, prixTot=(decimal)10.00,dateCom=DateTime.Today},
+                new Commande{produitID=2,clientID=1,quantCom=1, prixTot=(decimal)11.00,dateCom=DateTime.Today},
             };
             commandes.ForEach(s => context.commandes.Add(s));
             context.SaveChanges();

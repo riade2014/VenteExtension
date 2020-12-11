@@ -18,7 +18,9 @@ namespace VenteExtension
         // GET: Produit
         public ActionResult Index()
         {
-            return View(db.produits.ToList());
+            return View(db.produits.ToList().OrderBy(p => p.NomExt));
+
+            //return View(db.produits.ToList());
         }
 
         // GET: Produit/Details/5

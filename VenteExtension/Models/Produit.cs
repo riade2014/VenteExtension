@@ -9,7 +9,9 @@ namespace VenteExtension.Models
         [Key]
         public int ID { get; set; }
         public string NomExt { get; set; }
-        public double Prix_u { get; set; }
+        [Range(0.01, double.MaxValue, ErrorMessage = "Le prix doit être positif.")]
+        [DataType(DataType.Currency)]
+        public decimal Prix_u { get; set; }
         public int quant { get; set; }
 
 

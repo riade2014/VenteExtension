@@ -42,6 +42,7 @@ namespace VenteExtension
         {
             ViewBag.clientID = new SelectList(db.clients, "clientID", "nomCl");
             ViewBag.produitID = new SelectList(db.produits, "ID", "NomExt");
+            ViewBag.error = TempData["error"];
             return View();
         }
 
@@ -53,6 +54,7 @@ namespace VenteExtension
         //public ActionResult Create([Bind(Include = "commandeID,produitID,clientID,quantCom,prixTot,dateCom")] Commande commande)
         public ActionResult Create([Bind(Include = "commandeID,produitID,clientID,quantCom,prixTot,dateCom,prix_u")] Commande commande)
         {
+            int nbre=0;//c'est la variable qui me permets de recuperer la quantite commandee
             try
             {
                 if (ModelState.IsValid)
@@ -61,10 +63,34 @@ namespace VenteExtension
                     commande.dateCom = commande.dateCom;
                     Produit produit = db.produits.Find(commande.produitID);
                     commande.produit = produit;
-                    commande.prixTot = commande.calculPrixTot();
-                    db.commandes.Add(commande);
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
+                    Client client = db.clients.Find(commande.clientID);
+                    commande.client = client;
+                    if ((commande.clientID.Equals(client.clientID))&&(commande.produitID.Equals(produit.ID)))
+                    {
+                        //commande = db.commandes.Find(commande.quantCom);
+                        commande = db.commandes.Find(commande.quantCom);
+                        nbre = commande.quantCom;
+                        commande.quantCom = commande.quantCom+ nbre;
+                        commande.prixTot = commande.calculPrixTot();
+                    }
+                    //commande.prixTot = commande.calculPrixTot();
+
+                    if (commande.verifQuant())
+                    {
+                        db.commandes.Add(commande);
+                        db.SaveChanges();
+                    }
+                    else
+                    {
+                        TempData["error"] = "il faut minimum un produit ";
+                       // ViewBag.error = "il faut minimum un produit ";
+                        //return View("Create");
+                        return RedirectToAction("Create");
+
+                    }
+                        //db.commandes.Add(commande);
+
+                        return RedirectToAction("Index");
                 }
             }
             catch (DataException)
@@ -91,6 +117,7 @@ namespace VenteExtension
             }
             ViewBag.clientID = new SelectList(db.clients, "clientID", "nomCl", commande.clientID);
             ViewBag.produitID = new SelectList(db.produits, "ID", "NomExt", commande.produitID);
+            ViewBag.error = TempData["error"];
             return View(commande);
         }
 
@@ -108,8 +135,20 @@ namespace VenteExtension
                 Produit produit = db.produits.Find(commande.produitID);
                 commande.produit = produit;
                 commande.prixTot = commande.calculPrixTot();
-                db.Entry(commande).State = EntityState.Modified;
-                db.SaveChanges();
+                if (commande.verifQuant())
+                {
+                    db.Entry(commande).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+                else
+                {
+                    TempData["error"] = "il faut minimum un produit ";
+                    // ViewBag.error = "il faut minimum un produit ";
+                    //return View("Create");
+                    return RedirectToAction("Create");
+                }
+                //db.Entry(commande).State = EntityState.Modified;
+                //db.SaveChanges();
                 return RedirectToAction("Index");
             }
             ViewBag.clientID = new SelectList(db.clients, "clientID", "nomCl", commande.clientID);
