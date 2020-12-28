@@ -16,11 +16,17 @@ namespace VenteExtension
         private VenteContext db = new VenteContext();
 
         // GET: Client
-        public ActionResult Index()
+        public ActionResult Index(String searchString)
         {
-            
+            var clients = from s in db.clients
+                          select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                clients = clients.Where(s => s.nomCl.Contains(searchString)
+                                       || s.prenomCl.Contains(searchString));
+            }
 
-            return View(db.clients.ToList().OrderBy(c=> c.nomCl));
+            return View(db.clients.ToList().OrderBy(s=> s.nomCl));
 
         }
 

@@ -15,5 +15,6 @@ namespace VenteExtension.Models
 
 
         public virtual ICollection<Commande> commandes { get; set; }
+        //public virtual ICollection<LignePanier> lignePanier { get; set; }
     }
 }

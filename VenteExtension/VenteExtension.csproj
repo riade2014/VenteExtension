@@ -130,7 +130,8 @@
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\CommandeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\PanierController.cs" />
+    <Compile Include="Controllers\LignePanierController.cs" />
+    <Compile Include="dal\ProduitContext.cs" />
     <Compile Include="dal\VenteContext.cs" />
     <Compile Include="dal\VenteInitializer.cs" />
     <Compile Include="Global.asax.cs">
@@ -138,6 +139,7 @@
     </Compile>
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\Commande.cs" />
+    <Compile Include="Models\LignePanier.cs" />
     <Compile Include="Models\Panier.cs" />
     <Compile Include="Models\Produit.cs" />
     <Compile Include="Controllers\ProduitController.cs" />
@@ -194,11 +196,11 @@
     <Content Include="Views\Commande\Edit.cshtml" />
     <Content Include="Views\Commande\Index.cshtml" />
     <Content Include="Views\Produit\Create.cshtml" />
-    <Content Include="Views\Panier\Create.cshtml" />
-    <Content Include="Views\Panier\Delete.cshtml" />
-    <Content Include="Views\Panier\Details.cshtml" />
-    <Content Include="Views\Panier\Edit.cshtml" />
-    <Content Include="Views\Panier\Index.cshtml" />
+    <Content Include="Views\LignePanier\Create.cshtml" />
+    <Content Include="Views\LignePanier\Delete.cshtml" />
+    <Content Include="Views\LignePanier\Details.cshtml" />
+    <Content Include="Views\LignePanier\Edit.cshtml" />
+    <Content Include="Views\LignePanier\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
