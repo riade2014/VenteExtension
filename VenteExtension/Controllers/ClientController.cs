@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using VenteExtension.Models;
 using VenteExtension.dal;
+using PagedList;
+using System.Data.Entity.Infrastructure;
 
 namespace VenteExtension
 {
@@ -16,17 +18,41 @@ namespace VenteExtension
         private VenteContext db = new VenteContext();
 
         // GET: Client
-        public ActionResult Index(String searchString)
+        //public ActionResult Index()
+        //{
+
+        //    return View(db.clients.ToList().OrderBy(s=> s.nomCl));
+
+        //}
+
+        public ViewResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            var clients = from s in db.clients
-                          select s;
-            if (!String.IsNullOrEmpty(searchString))
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_asc" : "";
+            if (searchString != null)
             {
-                clients = clients.Where(s => s.nomCl.Contains(searchString)
-                                       || s.prenomCl.Contains(searchString));
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
             }
 
-            return View(db.clients.ToList().OrderBy(s=> s.nomCl));
+            ViewBag.CurrentFilter = searchString;
+            var clients = from s in db.clients
+                          select s;
+        
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                clients = clients.Where(s => s.nomCl.Contains(searchString));
+            }
+            clients = clients.OrderBy(s => s.nomCl);
+
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            return View(clients.ToPagedList(pageNumber, pageSize));
+           // return View(clients.ToList());
+            //return View(db.clients.ToList().OrderBy(s => s.nomCl));
 
         }
 
@@ -67,7 +93,8 @@ namespace VenteExtension
                     return RedirectToAction("Index");
                 }
             }
-            catch (DataException)
+            catch (RetryLimitExceededException /* dex */)
+            //catch (DataException)
             {
                 ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
             }

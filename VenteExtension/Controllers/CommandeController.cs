@@ -52,9 +52,9 @@ namespace VenteExtension
         [HttpPost]
         [ValidateAntiForgeryToken]
         //public ActionResult Create([Bind(Include = "commandeID,produitID,clientID,quantCom,prixTot,dateCom")] Commande commande)
-        public ActionResult Create([Bind(Include = "commandeID,produitID,clientID,quantCom,prixTot,dateCom,prix_u")] Commande commande)
+        public ActionResult Create([Bind(Include = "commandeID,produitID,clientID,quantCom,prixTot,dateCom")] Commande commande)
         {
-            int nbre=0;//c'est la variable qui me permets de recuperer la quantite commandee
+            //int nbre=0;//c'est la variable qui me permets de recuperer la quantite commandee
             try
             {
                 if (ModelState.IsValid)
@@ -63,17 +63,17 @@ namespace VenteExtension
                     commande.dateCom = commande.dateCom;
                     Produit produit = db.produits.Find(commande.produitID);
                     commande.produit = produit;
-                    Client client = db.clients.Find(commande.clientID);
-                    commande.client = client;
-                    if ((commande.clientID.Equals(client.clientID))&&(commande.produitID.Equals(produit.ID)))
+                    /*Client client = db.clients.Find(commande.clientID);
+                    commande.client = client;*/
+                    /*if ((commande.clientID.Equals(client.clientID))&&(commande.produitID.Equals(produit.ID)))
                     {
                         //commande = db.commandes.Find(commande.quantCom);
                         commande = db.commandes.Find(commande.quantCom);
                         nbre = commande.quantCom;
                         commande.quantCom = commande.quantCom+ nbre;
                         commande.prixTot = commande.calculPrixTot();
-                    }
-                    //commande.prixTot = commande.calculPrixTot();
+                    }*/
+                    commande.prixTot = commande.calculPrixTot();
 
                     if (commande.verifQuant())
                     {
